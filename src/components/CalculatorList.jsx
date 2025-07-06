@@ -1,23 +1,23 @@
-import React from 'react';
-
-const CalculatorList = ({ calculators, onSelect }) => {
+const CalculatorList = ({ calculators, onSelect, selectedId }) => {
   if (!calculators || calculators.length === 0) return null;
 
   return (
-    <div className="p-4">
-      <h2 className="font-semibold mb-2">Select Calculator:</h2>
-      <ul className="space-y-2">
+    <div className="mb-6">
+      <h2 className="font-semibold mb-2 text-gray-700">Select Calculator:</h2>
+      <div className="grid gap-3 sm:grid-cols-2">
         {calculators.map((calc) => (
-          <li key={calc.id}>
-            <button
-              className="bg-blue-500 text-white px-4 py-2 rounded w-full"
-              onClick={() => onSelect(calc.id)}
-            >
-              {calc.name}
-            </button>
-          </li>
+          <button
+            key={calc.id}
+            onClick={() => onSelect(calc.id)}
+            className={`px-4 py-2 rounded shadow-sm font-medium text-white transition
+              ${selectedId === calc.id
+                ? 'bg-blue-600'
+                : 'bg-blue-400 hover:bg-blue-500'}`}
+          >
+            {calc.name}
+          </button>
         ))}
-      </ul>
+      </div>
     </div>
   );
 };

@@ -1,16 +1,18 @@
-import React from 'react';
-
 const CategorySelector = ({ categories, onSelect }) => {
   return (
-    <div className="p-4">
-      <label className="block mb-2 font-bold">Select Category:</label>
+    <div className="mb-4">
+      <label className="block mb-1 font-medium text-gray-700">
+        Select Category:
+      </label>
       <select
-        className="p-2 border rounded w-full"
+        className="w-full p-2 border rounded focus:ring focus:border-blue-500"
         onChange={(e) => onSelect(e.target.value)}
       >
         <option value="">-- Choose a Category --</option>
         {categories.map((cat) => (
-          <option key={cat} value={cat}>{cat}</option>
+          <option key={cat} value={cat}>
+            {cat}
+          </option>
         ))}
       </select>
     </div>
